@@ -10,7 +10,7 @@ public static class VideojuegoService
     {
         Videojuegos = new List<Videojuego>
         {
-            
+            new Videojuego {Id = 1,Titulo ="Apex Legends", PrecioVenta = 3.99, Unidades = 10, Agotado = false}
         };
     }
 
@@ -19,7 +19,7 @@ public static class VideojuegoService
     public static Videojuego? Get(int id) => Videojuegos.FirstOrDefault(v => v.Id == id);
 
     public static void Add(Videojuego Videojuego)
-{
+    {
         Videojuego.Id = nextId++;
         Videojuegos.Add(Videojuego);
     }
@@ -27,7 +27,7 @@ public static class VideojuegoService
     public static void Delete(int id)
     {
         var Videojuego = Get(id);
-        if(Videojuego is null)
+        if (Videojuego is null)
             return;
 
         Videojuegos.Remove(Videojuego);
@@ -36,7 +36,7 @@ public static class VideojuegoService
     public static void Update(Videojuego Videojuego)
     {
         var index = Videojuegos.FindIndex(v => v.Id == Videojuego.Id);
-        if(index == -1)
+        if (index == -1)
             return;
 
         Videojuegos[index] = Videojuego;

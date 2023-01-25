@@ -14,6 +14,7 @@ public static class UsuarioService
         };
     }
 
+    
     public static List<Usuario> GetAll() => Usuarios;
 
     public static Usuario? Get(int id) => Usuarios.FirstOrDefault(u => u.Id == id);
