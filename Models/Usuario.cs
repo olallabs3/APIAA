@@ -1,4 +1,4 @@
-namespace APIfutfem.Models;
+namespace APIAA.Models;
 
 public class Usuario
 {

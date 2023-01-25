@@ -1,6 +1,6 @@
-using APIfutfem.Models;
+using APIAA.Models;
 
-namespace APIfutfem.Services;
+namespace APIAA.Services;
 
 public static class UsuarioService
 {

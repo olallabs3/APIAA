@@ -1,8 +1,8 @@
-using APIfutfem.Models;
-using APIfutfem.Services;
+using APIAA.Models;
+using APIAA.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace APIfutfem.Controllers;
+namespace APIAA.Controllers;
 
 [ApiController]
 [Route("[controller]")]
