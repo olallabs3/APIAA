@@ -10,13 +10,15 @@ public static class VideojuegoService
     {
         Videojuegos = new List<Videojuego>
         {
-            new Videojuego {Id = 1,Titulo ="Apex Legends", PrecioVenta = 3.99, Unidades = 10, Agotado = false}
+            new Videojuego {Id = 1,Titulo ="Apex Legends", PrecioVenta = 3.99, Unidades = 10, Agotado = false},
+            new Videojuego {Id = 2,Titulo ="Sheltered", PrecioVenta = 4.99, Unidades = 11, Agotado = false}
         };
     }
 
     public static List<Videojuego> GetAll() => Videojuegos;
 
     public static Videojuego? Get(int id) => Videojuegos.FirstOrDefault(v => v.Id == id);
+   
 
     public static void Add(Videojuego Videojuego)
     {

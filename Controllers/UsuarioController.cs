@@ -27,6 +27,17 @@ public class UsuarioController : ControllerBase
         return usuario;
     }
 
+    [HttpGet("/{nombre}")]
+    public ActionResult<Usuario> GetNombre(string nombre)
+    {
+        var usuario = UsuarioService.GetNombre(nombre);
+
+        if (usuario == null)
+            return NotFound();
+
+        return usuario;
+    }
+
     [HttpPost]
     public IActionResult Create(Usuario usuario)
     {
