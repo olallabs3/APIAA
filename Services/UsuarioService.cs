@@ -5,12 +5,17 @@ namespace APIAA.Services;
 public static class UsuarioService
 {
     static List<Usuario> Usuarios { get; }
-    static int nextId = 0;
+
+    //Comprobar el int cuando acabemos de meter usuarios por código
+    static int nextId = 5;
     static UsuarioService()
     {
         Usuarios = new List<Usuario>
         {
-
+            new Usuario{Id= 1, Nombre="administrador1" , Contrasenya="admin123",Fecha = DateTime.Now, Admin=true },
+             new Usuario{Id= 2, Nombre="administrador2" , Contrasenya="admin123",Fecha = DateTime.Now, Admin=true },
+              new Usuario{Id= 3, Nombre="administrador3" , Contrasenya="admin123",Fecha = DateTime.Now, Admin=true },
+            new Usuario{Id= 4, Nombre="prueba" , Contrasenya="prueba",Fecha = DateTime.Now, Admin=false }
         };
     }
 
@@ -18,9 +23,14 @@ public static class UsuarioService
     //Recoger datos de los usuarios, solo los datos correspondientes a nombre y contraseña
     public static List<Usuario> GetAll() => Usuarios;
 
+    //Recoger todos los datos por id
     public static Usuario? Get(int id) => Usuarios.FirstOrDefault(u => u.Id == id);
+    
+    //Recoger todos los datos por nombre
+    public static Usuario? GetNombre(string nombre) => Usuarios.FirstOrDefault(u => u.Nombre == nombre);
 
-    public static Usuario? GetNombre(string nombre) => Usuarios.FirstOrDefault(v => v.Nombre == nombre);
+
+    //  public static Usuario? GetNombreAll(string nombre) => Usuarios.(u => u.Nombre == nombre).ToList();
 
     public static void Add(Usuario Usuario)
     {
@@ -28,6 +38,7 @@ public static class UsuarioService
         Usuarios.Add(Usuario);
     }
 
+    //Borrado de usuario por id
     public static void Delete(int id)
     {
         var Usuario = Get(id);
@@ -36,6 +47,16 @@ public static class UsuarioService
 
         Usuarios.Remove(Usuario);
     }
+
+    // // Borrado de usuario por nombre
+    // public static void Delete(string nombre)
+    // {
+    //     var Usuario = GetNombre(nombre);
+    //     if (Usuario is null)
+    //         return;
+
+    //     Usuarios.Remove(Usuario);
+    // }
 
     public static void Update(Usuario Usuario)
     {
