@@ -19,3 +19,9 @@ Para ver la API --> Postwoman Postman https://localhost:7215/swagger/index.html
 dotnet add package Microsoft.EntityFrameworkCore --> Instalar FW EntityFramework
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer --> Instalar plugin SQL Server
 dotnet add package Microsoft.EntityFrameworkCore.Tools --> Herramientas
+
+dotnet tool install --global dotnet-ef --> herramientas para entity framework
+
+dotnet ef migrations add nombreMigracion --> para  añadir la migracion
+
+dotnet ef database update --> para subir la base de datos
