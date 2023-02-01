@@ -16,6 +16,10 @@ public class VideojuegoController : ControllerBase
     public ActionResult<List<Videojuego>> GetAll() =>
     VideojuegoService.GetAll();
 
+    [HttpGet("Videojuego/agotado")]
+    public ActionResult<List<Videojuego>> GetNotAgotados() =>
+    VideojuegoService.GetNotAgotados();
+
     [HttpGet("{id}")]
     public ActionResult<Videojuego> Get(int id)
     {

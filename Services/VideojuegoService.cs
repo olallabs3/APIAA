@@ -5,16 +5,25 @@ namespace APIAA.Services;
 public static class VideojuegoService
 {
     static List<Videojuego> Videojuegos { get; }
-    static int nextId = 5;
+    static int nextId = 4;
     static VideojuegoService()
     {
         Videojuegos = new List<Videojuego>
         {
-            new Videojuego {Id = 1,Titulo ="Apex Legends", PrecioVenta = 3.99, Unidades = 10, Agotado = false}
+            new Videojuego {Id = 1,Titulo ="Apex Legends", PrecioVenta = 3.99, Unidades = 10, Agotado = false},
+            new Videojuego {Id = 2,Titulo ="Medievil", PrecioVenta = 9.99, Unidades = 8, Agotado = false},
+            new Videojuego {Id = 3,Titulo ="The Last of Us", PrecioVenta = 80, Unidades = 0, Agotado = true}
         };
     }
 
     public static List<Videojuego> GetAll() => Videojuegos;
+    
+    public static List<Videojuego> GetNotAgotados(){
+
+        List<Videojuego> filtered =  GetAll().Where(x => x.Agotado == false).ToList();
+
+        return filtered;
+    }
 
     public static Videojuego? Get(int id) => Videojuegos.FirstOrDefault(v => v.Id == id);
 
