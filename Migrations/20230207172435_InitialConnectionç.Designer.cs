@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIAA.Migrations
 {
     [DbContext(typeof(VideojuegoContext))]
-    [Migration("20230201180247_Migration1")]
-    partial class Migration1
+    [Migration("20230207172435_InitialConnectionç")]
+    partial class InitialConnectionç
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

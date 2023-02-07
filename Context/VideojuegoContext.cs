@@ -9,5 +9,6 @@ namespace APIAA.Models{
 
         }
         DbSet<Videojuego> Videojuegos {get; set; } = null!;
+        DbSet<Usuario> Usuarios {get; set; } = null!;
     }
 }
