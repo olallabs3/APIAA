@@ -22,6 +22,27 @@ dotnet add package Microsoft.EntityFrameworkCore.Tools --> Herramientas
 
 dotnet tool install --global dotnet-ef --> herramientas para entity framework
 
-dotnet ef migrations add nombreMigracion --> para  añadir la migracion
+dotnet ef migrations add nombreMigracion --> para añadir la migracion
 
 dotnet ef database update --> para subir la base de datos
+
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(!)Password" -p 1435:1433 -d mcr.microsoft.com/mssql/server:2022-latest --> para nuestra bd
+
+https://learn.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver16&culture=es-es&country=es&tabs=redhat-install%2Credhat-uninstall --> descargar Azure Data Studio
+
+
+QUERY PARA CREAR LA BASE DE DATOS
+
+USE master
+GO
+IF NOT EXISTS (
+ SELECT name
+ FROM sys.databases
+ WHERE name = N'VideojuegoBBDD'
+)
+ CREATE DATABASE [VideojuegoBBDD];
+GO
+IF SERVERPROPERTY('VideojuegoBBDD') > '12'
+ ALTER DATABASE [VideojuegoBBDD] SET QUERY_STORE=ON;
+GO
+
