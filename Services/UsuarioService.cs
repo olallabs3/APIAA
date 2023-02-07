@@ -1,4 +1,5 @@
 using APIAA.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace APIAA.Services;
 
@@ -19,6 +20,19 @@ public static class UsuarioService
         };
     }
 
+// public async Task<Usuario> AddUsuarioAsync(Usuario usuario)
+//         {
+//             try
+//             {
+//                 await _db.Usuario.AddAsync(usuario);
+//                 await _db.SaveChangesAsync();
+//                 return await _db.Usuario.FindAsync(usuario.Id); // Auto ID from DB
+//             }
+//             catch (Exception ex)
+//             {
+//                 return null; // An error occured
+//             }
+//         }
 
     //Recoger datos de los usuarios, solo los datos correspondientes a nombre y contraseña
     public static List<Usuario> GetAll() => Usuarios;

@@ -8,7 +8,7 @@ namespace APIAA.Models{
         :base (options){
 
         }
-        DbSet<Videojuego> Videojuegos {get; set; } = null!;
-        DbSet<Usuario> Usuarios {get; set; } = null!;
+        public DbSet<Videojuego> Videojuegos {get; set; } = null!;
+        public DbSet<Usuario> Usuarios {get; set; } = null!;
     }
 }
