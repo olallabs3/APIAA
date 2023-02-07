@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace APIAA.Migrations
 {
     /// <inheritdoc />
-    public partial class _1 : Migration
+    public partial class initialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,6 +26,22 @@ namespace APIAA.Migrations
                 {
                     table.PrimaryKey("PK_Usuarios", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Videojuegos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Titulo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PrecioVenta = table.Column<double>(type: "float", nullable: false),
+                    Unidades = table.Column<int>(type: "int", nullable: false),
+                    Agotado = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Videojuegos", x => x.Id);
+                });
         }
 
         /// <inheritdoc />
@@ -33,6 +49,9 @@ namespace APIAA.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Usuarios");
+
+            migrationBuilder.DropTable(
+                name: "Videojuegos");
         }
     }
 }
