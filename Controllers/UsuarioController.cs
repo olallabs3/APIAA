@@ -56,6 +56,59 @@ public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario){
 
     return CreatedAtAction(nameof(GetUsuario), new {id = usuario.Id}, usuario);
 }
+[HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteUsuario(int id)
+    {
+        if (_dbContext.Usuarios == null)
+        {
+            return NotFound();
+        }
+        var usuario = await _dbContext.Usuarios.FindAsync(id);
+        if (usuario == null)
+        {
+            return NotFound();
+        }
+
+        _dbContext.Usuarios.Remove(usuario);
+        await _dbContext.SaveChangesAsync();
+        return NoContent();
+    }
+
+
+    //NO LLEGA A IR
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutUsuario(int id, Usuario usuario)
+    {
+        if (id != usuario.Id)
+        {
+            return BadRequest();
+        }
+        _dbContext.Entry(usuario).State = EntityState.Modified;
+
+        try
+        {
+            await _dbContext.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!UsuarioExists(id))
+            {
+                return NotFound();
+
+            }
+            else
+            {
+                throw;
+            }
+
+        }
+        return NoContent();
+    }
+    private bool UsuarioExists(long id)
+    {
+        return (_dbContext.Usuarios?.Any(u => u.Id == id)).GetValueOrDefault();
+    }
+}
 }
 
 // [ApiController]
