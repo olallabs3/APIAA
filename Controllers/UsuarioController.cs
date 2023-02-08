@@ -19,7 +19,7 @@ public class UsuariosController : ControllerBase
     }
 
 
-// GET: api/Usuarios
+
 [HttpGet]
 public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuario()
 {
@@ -30,7 +30,7 @@ public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuario()
     return await _dbContext.Usuarios.ToListAsync();
 }
 
-// GET: api/Usuarios/5
+
 [HttpGet("(id)")]
 public async Task<ActionResult<Usuario>> GetUsuario(int id)
 {
@@ -109,7 +109,7 @@ public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario){
         return (_dbContext.Usuarios?.Any(u => u.Id == id)).GetValueOrDefault();
     }
 }
-}
+
 
 // [ApiController]
 // [Route("[controller]")]
