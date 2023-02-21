@@ -21,7 +21,8 @@ public class VideojuegoController : ControllerBase
     VideojuegoService.GetNotAgotados();
 
     [HttpGet("{id}")]
-    public ActionResult<Videojuego> Get(int id)
+    /*Esto creo que es cosa de Alex*/
+    public ActionResult<Videojuego> Get(int id , [FromQuery] int idVideojuego, string titulo, Boolean agotado = false)
     {
         var videojuego = VideojuegoService.Get(id);
 
@@ -30,9 +31,21 @@ public class VideojuegoController : ControllerBase
 
         return videojuego;
     }
+    /*Igual se puede combinar con el HttpGet anterior*/
+    [HttpGet("{id}/Transacciones")]
+    public ActionResult<List<Transaccion>> Get(int id){
+        List<Transaccion> registros = TransaccionService.GetAll().Where(x => x.VideojuegoId == id).ToList();
+
+        if(registros == null){
+            return NotFound();
+        }
+        
+        return registros;
+    }
+
 
     [HttpPost]
-    public IActionResult Create(Videojuego videojuego)
+    public IActionResult Create([FromBody]Videojuego videojuego)
     {
         VideojuegoService.Add(videojuego);
         return CreatedAtAction(nameof(Get), new { id = videojuego.Id }, videojuego);
