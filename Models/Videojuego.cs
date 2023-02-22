@@ -7,4 +7,6 @@ public string? Titulo {get; set;}
 public double PrecioVenta {get; set;}
 public int Unidades {get; set;}
 public bool Agotado {get; set;}
+
+//public List<Transaccion> Transacciones = new List<Transaccion>();
 }
