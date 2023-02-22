@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIAA.Migrations
 {
     [DbContext(typeof(VideojuegoContext))]
-    [Migration("20230207180258_initialMigration")]
-    partial class initialMigration
+    [Migration("20230222170934_VideojuegoContext.cs")]
+    partial class VideojuegoContextcs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,28 @@ namespace APIAA.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("APIAA.Models.Transaccion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("Unidades")
+                        .HasColumnType("float");
+
+                    b.Property<int>("VideojuegoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Transacciones");
+                });
 
             modelBuilder.Entity("APIAA.Models.Usuario", b =>
                 {

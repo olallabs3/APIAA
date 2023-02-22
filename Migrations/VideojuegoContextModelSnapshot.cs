@@ -22,6 +22,28 @@ namespace APIAA.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("APIAA.Models.Transaccion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("Unidades")
+                        .HasColumnType("float");
+
+                    b.Property<int>("VideojuegoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Transacciones");
+                });
+
             modelBuilder.Entity("APIAA.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
