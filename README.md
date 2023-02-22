@@ -15,3 +15,7 @@ Models --> Objeto Services --> Declaración de los métodos Controllers --> Dond
 Models << Services << Controllers
 
 Para ver la API --> Postwoman Postman https://localhost:7215/swagger/index.html
+
+dotnet add package Microsoft.EntityFrameworkCore --> Instalar FW EntityFramework
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --> Instalar plugin SQL Server
+dotnet add package Microsoft.EntityFrameworkCore.Tools --> Herramientas

@@ -64,6 +64,7 @@ public class VideojuegoController : ControllerBase
         VideojuegoService.Update(videojuego);
 
         return NoContent();
+        
     }
 
     [HttpDelete("{id}")]

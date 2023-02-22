@@ -32,6 +32,7 @@ public static class VideojuegoService
     }
 
     public static Videojuego? Get(int id) => Videojuegos.FirstOrDefault(v => v.Id == id);
+   
 
     public static void Add(Videojuego Videojuego)
     {
