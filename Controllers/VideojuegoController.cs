@@ -39,7 +39,7 @@ public class VideojuegoController : ControllerBase
         if(registros == null){
             return NotFound();
         }
-        
+
         return registros;
     }
 

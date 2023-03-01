@@ -28,6 +28,7 @@ public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuario()
         return NotFound();
     }
     return await _dbContext.Usuarios.ToListAsync();
+   
 }
 
 
