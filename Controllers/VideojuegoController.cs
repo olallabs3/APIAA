@@ -129,9 +129,7 @@ public async Task<ActionResult<Videojuego>> GetVideojuego(int id)
     }
 
 
-   
-
-    //BORRADO DE VIDEOJUEGO POR ID
+      //BORRADO DE VIDEOJUEGO POR ID
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteVideojuego(int id)
