@@ -30,4 +30,12 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(!)Password" -p 14
 
 https://learn.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver16&culture=es-es&country=es&tabs=redhat-install%2Credhat-uninstall --> descargar Azure Data Studio
 
+https://learn.microsoft.com/es-es/azure/azure-sql/database/free-sql-db-free-account-how-to-deploy?view=azuresql --> Info para crear la bbdd en Azure Portal
+
+yourStrong(!) --> contraseña servidor bbdd
+
+usuarioazure --> Inicio de sesión del administrador del servidor
+
+"VideojuegoBBDD": "Server=localhost,1435;Database=VideojuegoBBDD;Uid=sa;Pwd=yourStrong(!)Password;TrustServerCertificate=True" --> Cadena conexión appsettings
+
 

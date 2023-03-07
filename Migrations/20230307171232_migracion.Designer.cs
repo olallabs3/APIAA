@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIAA.Migrations
 {
     [DbContext(typeof(VideojuegoContext))]
-    [Migration("20230228160807_migracion")]
+    [Migration("20230307171232_migracion")]
     partial class migracion
     {
         /// <inheritdoc />
