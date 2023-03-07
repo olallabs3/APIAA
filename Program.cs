@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddDbContext<VideojuegoContext>(options =>
- options.UseSqlServer(builder.Configuration.GetConnectionString("VideojuegoBBDD")));
+ options.UseSqlServer(builder.Configuration.GetConnectionString("VideojuegoBBDD2")));
 
 
 builder.Services.AddControllers();
