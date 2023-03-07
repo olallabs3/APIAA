@@ -20,44 +20,45 @@ public class UsuariosController : ControllerBase
 
 
 
-[HttpGet]
-public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuario()
-{
-    if (_dbContext.Usuarios == null)
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuario()
     {
-        return NotFound();
-    }
-    return await _dbContext.Usuarios.ToListAsync();
-   
-}
+        if (_dbContext.Usuarios == null)
+        {
+            return NotFound();
+        }
+        return await _dbContext.Usuarios.ToListAsync();
 
-
-[HttpGet("(id)")]
-public async Task<ActionResult<Usuario>> GetUsuario(int id)
-{
-    if (_dbContext.Usuarios == null)
-    {
-        return NotFound();
     }
 
-    var usuario = await _dbContext.Usuarios.FindAsync(id);
 
-    if (usuario == null)
+    [HttpGet("(id)")]
+    public async Task<ActionResult<Usuario>> GetUsuario(int id)
     {
-        return NotFound();
+        if (_dbContext.Usuarios == null)
+        {
+            return NotFound();
+        }
+
+        var usuario = await _dbContext.Usuarios.FindAsync(id);
+
+        if (usuario == null)
+        {
+            return NotFound();
+        }
+        return usuario;
     }
-    return usuario;
-}
 
-[HttpPost]
+    [HttpPost]
 
-public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario){
-    _dbContext.Usuarios.Add(usuario);
-    await _dbContext.SaveChangesAsync();
+    public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario)
+    {
+        _dbContext.Usuarios.Add(usuario);
+        await _dbContext.SaveChangesAsync();
 
-    return CreatedAtAction(nameof(GetUsuario), new {id = usuario.Id}, usuario);
-}
-[HttpDelete("{id}")]
+        return CreatedAtAction(nameof(GetUsuario), new { id = usuario.Id }, usuario);
+    }
+    [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteUsuario(int id)
     {
         if (_dbContext.Usuarios == null)
@@ -111,7 +112,7 @@ public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario){
     }
 }
 
-  
+
 
 
 // [ApiController]

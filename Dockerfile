@@ -14,4 +14,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0
 EXPOSE 80
 WORKDIR /App
 COPY --from=build-env /App/out .
+CMD dotnet tool install --global dotnet-ef
+CMD dotnet ef database update
 ENTRYPOINT ["dotnet", "APIAA.dll"]
