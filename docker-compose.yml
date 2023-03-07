@@ -16,5 +16,6 @@ services:
           - "8725:1433"
 
         environment:
-            SA_PASSWORD: "S3cur3P@ssW0rd!"
+            SA_USERNAME: "sa"
+            SA_PASSWORD: "yourStrong(!)Password"
             ACCEPT_EULA: "Y"
