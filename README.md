@@ -30,4 +30,4 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(!)Password" -p 14
 
 https://learn.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver16&culture=es-es&country=es&tabs=redhat-install%2Credhat-uninstall --> descargar Azure Data Studio
 
-
+Tutorial relaciones entre tablas EFcore => https://learn.microsoft.com/en-us/ef/core/modeling/relationships?tabs=fluent-api%2Cfluent-api-composite-key%2Csimple-key
