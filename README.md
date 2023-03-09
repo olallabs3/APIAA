@@ -30,6 +30,9 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(!)Password" -p 87
 
 https://learn.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver16&culture=es-es&country=es&tabs=redhat-install%2Credhat-uninstall --> descargar Azure Data Studio
 
+
+Tutorial relaciones entre tablas EFcore => https://learn.microsoft.com/en-us/ef/core/modeling/relationships?tabs=fluent-api%2Cfluent-api-composite-key%2Csimple-key
+
 https://apiaa25944.azurewebsites.net/swagger/index.html --> acceder al swagger
 
 https://learn.microsoft.com/es-es/azure/azure-sql/database/free-sql-db-free-account-how-to-deploy?view=azuresql --> Info para crear la bbdd en Azure Portal

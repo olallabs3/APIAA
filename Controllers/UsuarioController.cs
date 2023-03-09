@@ -42,12 +42,29 @@ public class UsuariosController : ControllerBase
 
         var usuario = await _dbContext.Usuarios.FindAsync(id);
 
-        if (usuario == null)
+    if (usuario == null)
+    {
+        return NotFound();
+    }
+    return usuario;
+}
+
+/*Intento de endpoint TODOS LOS VIDEOJUEGOS DE UN USUARIO*/
+[HttpGet("(id)/Videojuegos")]
+public async Task<ActionResult<List<Videojuego>>> GetUsrVideojuegos(int id){
+    var usuario = await _dbContext.Usuarios.Include(b => b.Bibliotecas)
+                                        .ThenInclude(v => v.Videojuego)
+                                        .FirstOrDefaultAsync(b => b.Id == id);
+    /*Como solo busco un usuario en concreto y no una colección de ellos uso FirstOrDefault en vez de Where*/
+    
+    if (usuario == null)
         {
             return NotFound();
         }
-        return usuario;
-    }
+
+    var coleccion = usuario.Bibliotecas.Select(i => i.Videojuego).ToList();
+    return coleccion;
+}
 
     [HttpPost]
 
