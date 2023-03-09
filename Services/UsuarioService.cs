@@ -8,15 +8,15 @@ public static class UsuarioService
     static List<Usuario> Usuarios { get; }
 
     //Comprobar el int cuando acabemos de meter usuarios por código
-    static int nextId = 1;
+    static int nextId = 5;
     static UsuarioService()
     {
         Usuarios = new List<Usuario>
         {
-            /* new Usuario{Id= 1, Nombre="administrador1" , Contrasenya="admin123",Fecha = DateTime.Now, Admin=true },
+            new Usuario{Id= 1, Nombre="administrador1" , Contrasenya="admin123",Fecha = DateTime.Now, Admin=true },
              new Usuario{Id= 2, Nombre="administrador2" , Contrasenya="admin123",Fecha = DateTime.Now, Admin=true },
               new Usuario{Id= 3, Nombre="administrador3" , Contrasenya="admin123",Fecha = DateTime.Now, Admin=true },
-            new Usuario{Id= 4, Nombre="prueba" , Contrasenya="prueba",Fecha = DateTime.Now, Admin=false } */
+            new Usuario{Id= 4, Nombre="prueba" , Contrasenya="prueba",Fecha = DateTime.Now, Admin=false }
         };
     }
 
@@ -80,6 +80,4 @@ public static class UsuarioService
 
         Usuarios[index] = Usuario;
     }
-
-
 }
