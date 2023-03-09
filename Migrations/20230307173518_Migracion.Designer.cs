@@ -4,6 +4,7 @@ using APIAA.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIAA.Migrations
 {
     [DbContext(typeof(VideojuegoContext))]
-    partial class VideojuegoContextModelSnapshot : ModelSnapshot
+    [Migration("20230307173518_Migracion")]
+    partial class Migracion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +37,7 @@ namespace APIAA.Migrations
 
                     b.HasIndex("VideojuegoId");
 
-                    b.ToTable("Bibliotecas");
+                    b.ToTable("Biblioteca");
                 });
 
             modelBuilder.Entity("APIAA.Models.Transaccion", b =>
@@ -73,12 +76,14 @@ namespace APIAA.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Contrasenya")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -101,6 +106,7 @@ namespace APIAA.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("Titulo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Unidades")
