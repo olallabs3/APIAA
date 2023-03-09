@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddDbContext<VideojuegoContext>(options =>
- options.UseSqlServer(builder.Configuration.GetConnectionString("VideojuegoBBDD")));
+ options.UseSqlServer(builder.Configuration.GetConnectionString("VideojuegoBBDD2")));
 
 
 builder.Services.AddControllers();
@@ -17,11 +17,12 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-/* if (app.Environment.IsDevelopment()) */
-{
+
+// if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseHttpsRedirection();
 

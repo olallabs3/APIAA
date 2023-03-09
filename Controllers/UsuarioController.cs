@@ -28,6 +28,7 @@ public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuario()
         return NotFound();
     }
     return await _dbContext.Usuarios.ToListAsync();
+   
 }
 
 
@@ -126,6 +127,8 @@ public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario){
         return (_dbContext.Usuarios?.Any(u => u.Id == id)).GetValueOrDefault();
     }
 }
+
+  
 
 
 // [ApiController]
