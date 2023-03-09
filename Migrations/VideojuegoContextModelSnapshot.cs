@@ -22,21 +22,6 @@ namespace APIAA.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("APIAA.Models.Biblioteca", b =>
-                {
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VideojuegoId")
-                        .HasColumnType("int");
-
-                    b.HasKey("UsuarioId", "VideojuegoId");
-
-                    b.HasIndex("VideojuegoId");
-
-                    b.ToTable("Bibliotecas");
-                });
-
             modelBuilder.Entity("APIAA.Models.Transaccion", b =>
                 {
                     b.Property<int>("Id")
@@ -56,8 +41,6 @@ namespace APIAA.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VideojuegoId");
-
                     b.ToTable("Transacciones");
                 });
 
@@ -73,12 +56,14 @@ namespace APIAA.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Contrasenya")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -109,46 +94,6 @@ namespace APIAA.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Videojuegos");
-                });
-
-            modelBuilder.Entity("APIAA.Models.Biblioteca", b =>
-                {
-                    b.HasOne("APIAA.Models.Usuario", "Usuario")
-                        .WithMany("Bibliotecas")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("APIAA.Models.Videojuego", "Videojuego")
-                        .WithMany("Bibliotecas")
-                        .HasForeignKey("VideojuegoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Usuario");
-
-                    b.Navigation("Videojuego");
-                });
-
-            modelBuilder.Entity("APIAA.Models.Transaccion", b =>
-                {
-                    b.HasOne("APIAA.Models.Videojuego", "Videojuego")
-                        .WithMany()
-                        .HasForeignKey("VideojuegoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Videojuego");
-                });
-
-            modelBuilder.Entity("APIAA.Models.Usuario", b =>
-                {
-                    b.Navigation("Bibliotecas");
-                });
-
-            modelBuilder.Entity("APIAA.Models.Videojuego", b =>
-                {
-                    b.Navigation("Bibliotecas");
                 });
 #pragma warning restore 612, 618
         }

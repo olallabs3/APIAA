@@ -5,16 +5,16 @@ namespace APIAA.Services;
 public static class VideojuegoService
 {
     static List<Videojuego> Videojuegos { get; }
-    static int nextId = 1;
+    static int nextId = 4;
     static VideojuegoService()
     {
         //var transaccion = TransaccionService.Get(1);
 
         Videojuegos = new List<Videojuego>
         {
-            /* new Videojuego {Id = 1, Titulo ="Apex Legends", PrecioVenta = 3.99, Unidades = 10, Agotado = false},
-            new Videojuego {Id = 2, Titulo ="Medievil", PrecioVenta = 9.99, Unidades = 8, Agotado = false},
-            new Videojuego {Id = 3, Titulo ="The Last of Us", PrecioVenta = 80, Unidades = 0, Agotado = true} */
+            new Videojuego {Id = 1, Titulo ="Apex Legends", PrecioVenta = 3.99, Unidades = 10, Agotado = false/* , Transacciones = {} */},
+            new Videojuego {Id = 2, Titulo ="Medievil", PrecioVenta = 9.99, Unidades = 8, Agotado = false/* , Transacciones = {} */},
+            new Videojuego {Id = 3, Titulo ="The Last of Us", PrecioVenta = 80, Unidades = 0, Agotado = true/* , Transacciones = {} */}
         };
 
         /* Videojuegos[0].Transacciones.Add(TransaccionService.Get(1));
