@@ -26,16 +26,20 @@ dotnet ef migrations add nombreMigracion --> para añadir la migracion
 
 dotnet ef database update --> para subir la base de datos
 
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(!)Password" -p 87252:1433 -d mcr.microsoft.com/mssql/server:2022-latest --> para nuestra bd
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(!)Password" -p 8725:1433 -d mcr.microsoft.com/mssql/server:2022-latest --> para nuestra bd
 
 https://learn.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver16&culture=es-es&country=es&tabs=redhat-install%2Credhat-uninstall --> descargar Azure Data Studio
+
+https://apiaa25944.azurewebsites.net/swagger/index.html --> acceder al swagger
 
 https://learn.microsoft.com/es-es/azure/azure-sql/database/free-sql-db-free-account-how-to-deploy?view=azuresql --> Info para crear la bbdd en Azure Portal
 
 yourStrong(!) --> contraseña servidor bbdd
 
+docker-compose up -d --> levantar el contenedor
+
 usuarioazure --> Inicio de sesión del administrador del servidor
 
 "VideojuegoBBDD": "Server=localhost,1435;Database=VideojuegoBBDD;Uid=sa;Pwd=yourStrong(!)Password;TrustServerCertificate=True" --> Cadena conexión appsettings
 
-
+https://blog.christian-schou.dk/dockerize-net-core-web-api-with-ms-sql-server/ --> Para crear el docker-compose
