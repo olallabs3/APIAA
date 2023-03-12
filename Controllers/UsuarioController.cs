@@ -49,22 +49,6 @@ public class UsuariosController : ControllerBase
     return usuario;
 }
 
-/*Intento de endpoint TODOS LOS VIDEOJUEGOS DE UN USUARIO*/
-[HttpGet("(id)/Videojuegos")]
-public async Task<ActionResult<List<Videojuego>>> GetUsrVideojuegos(int id){
-    var usuario = await _dbContext.Usuarios.Include(b => b.Bibliotecas)
-                                        .ThenInclude(v => v.Videojuego)
-                                        .FirstOrDefaultAsync(b => b.Id == id);
-    /*Como solo busco un usuario en concreto y no una colección de ellos uso FirstOrDefault en vez de Where*/
-    
-    if (usuario == null)
-        {
-            return NotFound();
-        }
-
-    var coleccion = usuario.Bibliotecas.Select(i => i.Videojuego).ToList();
-    return coleccion;
-}
 
     [HttpPost]
 
@@ -94,7 +78,7 @@ public async Task<ActionResult<List<Videojuego>>> GetUsrVideojuegos(int id){
     }
 
 
-    //NO LLEGA A IR
+
     [HttpPut("{id}")]
     public async Task<IActionResult> PutUsuario(int id, Usuario usuario)
     {
@@ -128,92 +112,3 @@ public async Task<ActionResult<List<Videojuego>>> GetUsrVideojuegos(int id){
         return (_dbContext.Usuarios?.Any(u => u.Id == id)).GetValueOrDefault();
     }
 }
-
-
-
-
-// [ApiController]
-// [Route("[controller]")]
-// public class UsuarioController : ControllerBase
-// {
-//     public UsuarioController()
-//     {
-//     }
-
-//     [HttpGet]
-//     public ActionResult<List<Usuario>> GetAll() =>
-//     UsuarioService.GetAll();
-
-//     [HttpGet("{id}")]
-//     public ActionResult<Usuario> Get(int id)
-//     {
-//         var GetUsuario = UsuarioService.Get(id);
-
-//         if (GetUsuario == null)
-//             return NotFound();
-
-//         return GetUsuario;
-//     }
-
-//     [HttpGet("/{nombre}")]
-//     public ActionResult<Usuario> GetNombre(string nombre)
-//     {
-//         var GetUsuario = UsuarioService.GetNombre(nombre);
-
-//         if (GetUsuario == null)
-//             return NotFound();
-
-//         return GetUsuario;
-//     }
-
-
-//     [HttpPost]
-//     public IActionResult Create(Usuario GetUsuario)
-//     {
-//         UsuarioService.Add(GetUsuario);
-//         return CreatedAtAction(nameof(Get), new { id = GetUsuario.Id }, GetUsuario);
-//     }
-
-//     [HttpPut("{id}")]
-//     public IActionResult Update(int id, Usuario GetUsuario)
-//     {
-//         if (id != GetUsuario.Id)
-//             return BadRequest();
-
-//         var existingUsuario = UsuarioService.Get(id);
-//         if (existingUsuario is null)
-//             return NotFound();
-
-//         UsuarioService.Update(GetUsuario);
-
-//         return NoContent();
-//     }
-
-//     Borrado por id 
-//     [HttpDelete("{id}")]
-//     public IActionResult Delete(int id)
-//     {
-//         var GetUsuario = UsuarioService.Get(id);
-
-//         if (GetUsuario is null)
-//             return NotFound();
-
-//         UsuarioService.Delete(id);
-
-//         return NoContent();
-//     }
-
-//     //Borrado por nombre 
-//     [HttpDelete("/{nombre}")]
-//     public IActionResult Delete(string nombre)
-//     {
-//         var GetUsuario = UsuarioService.GetNombre(nombre);
-
-//         if (GetUsuario is null)
-//             return NotFound();
-
-//         UsuarioService.Delete(nombre);
-
-//         return NoContent();
-//     }
-// }

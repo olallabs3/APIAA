@@ -17,29 +17,6 @@ public class BibliotecaController : ControllerBase
         _context = context;
     }
 
-    /*Añadir un videojuego a un usuario*/
-    /* [HttpPost("{idUsuario}/Videojuegos")]
-    public IActionResult AddVideojuego(int idUsuario, [FromBody] Videojuego videojuego)
-    {
-        var usuario = _context.Usuarios.Include(u => u.Bibliotecas).SingleOrDefault(u => u.Id == idUsuario);
-
-        if (usuario == null)
-        {
-            return NotFound();
-        }
-
-        var biblioteca = new Biblioteca
-        {
-            UsuarioId = usuario.Id,
-            VideojuegoId = videojuego.Id
-        };
-
-        usuario.Bibliotecas.Add(biblioteca);
-        _context.SaveChanges();
-
-        return CreatedAtAction(nameof(GetById), new { id = biblioteca.Id }, biblioteca);
-    } */
-
     [HttpGet("(id)")]
     public async Task<ActionResult<List<Biblioteca>>> GetBiblioteca(int id)
     {

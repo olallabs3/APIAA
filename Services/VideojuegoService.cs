@@ -8,18 +8,8 @@ public static class VideojuegoService
     static int nextId = 1;
     static VideojuegoService()
     {
-        //var transaccion = TransaccionService.Get(1);
-
         Videojuegos = new List<Videojuego>
-        {
-            /* new Videojuego {Id = 1, Titulo ="Apex Legends", PrecioVenta = 3.99, Unidades = 10, Agotado = false},
-            new Videojuego {Id = 2, Titulo ="Medievil", PrecioVenta = 9.99, Unidades = 8, Agotado = false},
-            new Videojuego {Id = 3, Titulo ="The Last of Us", PrecioVenta = 80, Unidades = 0, Agotado = true} */
-        };
-
-        /* Videojuegos[0].Transacciones.Add(TransaccionService.Get(1));
-        Videojuegos[1].Transacciones.Add(TransaccionService.Get(2));
-        Videojuegos[2].Transacciones.Add(TransaccionService.Get(3)); */
+        {};
     }
 
     public static List<Videojuego> GetAll() => Videojuegos;
@@ -37,7 +27,7 @@ public static class VideojuegoService
     public static void Add(Videojuego Videojuego)
     {
         /*Controles de coherencia de datos*/
-        /**/if(GetAll().Where(x => x.Titulo == Videojuego.Titulo).ToList().Count == 0 || Videojuego.Unidades >= 0){
+        if(GetAll().Where(x => x.Titulo == Videojuego.Titulo).ToList().Count == 0 || Videojuego.Unidades >= 0){
             if(Videojuego.Unidades == 0){
                 Videojuego.Agotado = true;
             }else{

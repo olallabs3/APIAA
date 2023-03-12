@@ -13,7 +13,7 @@ namespace APIAA.Models{
         public DbSet<Transaccion> Transacciones {get; set; } = null!;
         public DbSet<Biblioteca> Bibliotecas {get; set;} = null!;
     
-        /*Movida EFcore modelo de la relación N-M*/
+        /*EFcore modelo de la relación N-M*/
         protected override void OnModelCreating(ModelBuilder modelBuilder){
             modelBuilder.Entity<Usuario>()
             .HasMany(u => u.Videojuegos) //u es cada uno de todos los usuarios

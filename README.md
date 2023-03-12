@@ -43,8 +43,6 @@ docker-compose up -d --> levantar el contenedor
 
 usuarioazure --> Inicio de sesión del administrador del servidor
 
-"VideojuegoBBDD": "Server=localhost,1435;Database=VideojuegoBBDD;Uid=sa;Pwd=yourStrong(!)Password;TrustServerCertificate=True" --> Cadena conexión appsettings
+"VideojuegoBBDD": "Server=localhost,1435;Database=VideojuegoBBDD;Uid=sa;Pwd=yourStrong(!)Password;TrustServerCertificate=True" --> Cadena conexión BBDD local
 
 https://blog.christian-schou.dk/dockerize-net-core-web-api-with-ms-sql-server/ --> Para crear el docker-compose
-
-https://apiaa25944.azurewebsites.net/swagger/index.html --> Enlace a la API en Azure

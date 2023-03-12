@@ -28,58 +28,22 @@ public class VideojuegoController : ControllerBase
         return await _dbContext.Videojuegos.OrderByDescending(i => i.Unidades).ToListAsync();
     }
 
-   
-    //Boolean parametro de entrada
-
-    [HttpGet("Videojuegos/agotado")]
-    public async Task<ActionResult<IEnumerable<Videojuego>>> GetNotAgotados()
-     => VideojuegoService.GetNotAgotados();
-
-  
-
   [HttpGet("(id)")]
-public async Task<ActionResult<Videojuego>> GetVideojuego(int id)
-{
-    if (_dbContext.Videojuegos == null)
+    public async Task<ActionResult<Videojuego>> GetVideojuego(int id)
     {
-        return NotFound();
-    }
-
-    var videojuego = await _dbContext.Videojuegos.FindAsync(id);
-
-    if (videojuego == null)
-    {
-        return NotFound();
-    }
-    return videojuego;
-}
-
-
-    // [HttpGet("{id}")]
-    // /*Esto creo que es cosa de Alex*/
-    // public ActionResult<Videojuego> Get(int id, [FromQuery] int idVideojuego, string titulo, Boolean agotado = false)
-    // {
-    //     var videojuego = VideojuegoService.Get(id);
-
-    //     if (videojuego == null)
-    //         return NotFound();
-
-    //     return videojuego;
-    // }
-    /*Igual se puede combinar con el HttpGet anterior*/
-    [HttpGet("{id}/Transacciones")]
-    public ActionResult<List<Transaccion>> Get(int id)
-    {
-        List<Transaccion> registros = TransaccionService.GetAll().Where(x => x.VideojuegoId == id).ToList();
-
-        if (registros == null)
+        if (_dbContext.Videojuegos == null)
         {
             return NotFound();
         }
 
-        return registros;
-    }
+        var videojuego = await _dbContext.Videojuegos.FindAsync(id);
 
+        if (videojuego == null)
+        {
+            return NotFound();
+        }
+        return videojuego;
+    }
 
     //CREAR NUEVO JUEGO
     [HttpPost]
@@ -88,7 +52,7 @@ public async Task<ActionResult<Videojuego>> GetVideojuego(int id)
         _dbContext.Videojuegos.Add(videojuego);
         await _dbContext.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(Get), new { id = videojuego.Id }, videojuego);
+        return videojuego;
     }
 
    
@@ -148,52 +112,4 @@ public async Task<ActionResult<Videojuego>> GetVideojuego(int id)
         await _dbContext.SaveChangesAsync();
         return NoContent();
     }
-
- 
 }
-
-
-  // [HttpGet("Videojuegos/agotado")]
-    // public ActionResult<List<Videojuegos>> GetNotAgotados() =>
-    // VideojuegoService.GetNotAgotados();
-
- // [HttpPost]
-    // public IActionResult Create([FromBody]Videojuegos videojuego)
-    // {
-    //     VideojuegoService.Add(videojuego);
-    //     return CreatedAtAction(nameof(Get), new { id = videojuego.Id }, videojuego);
-    // }
-
- // [HttpPut("{id}")]
-    // public IActionResult Update(int id, Videojuegos videojuego)
-    // {
-    //     if (id != videojuego.Id)
-    //         return BadRequest();
-
-    //     var existingVideojuego = VideojuegoService.Get(id);
-    //     if (existingVideojuego is null)
-    //         return NotFound();
-
-    //     VideojuegoService.Update(videojuego);
-
-    //     return NoContent();
-    // }
-
-
- // [HttpGet]
-    // public ActionResult<List<Videojuegos>> GetAll() =>
-    // VideojuegoService.GetAll();
-
-
-   // [HttpDelete("{id}")]
-    // public IActionResult Delete(int id)
-    // {
-    //     var videojuego = VideojuegoService.Get(id);
-
-    //     if (videojuego is null)
-    //         return NotFound();
-
-    //     VideojuegoService.Delete(id);
-
-    //     return NoContent();
-    // }
