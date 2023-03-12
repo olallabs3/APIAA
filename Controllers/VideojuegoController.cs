@@ -25,7 +25,7 @@ public class VideojuegoController : ControllerBase
         {
             return NotFound();
         }
-        return await _dbContext.Videojuegos.ToListAsync();
+        return await _dbContext.Videojuegos.OrderByDescending(i => i.Unidades).ToListAsync();
     }
 
    

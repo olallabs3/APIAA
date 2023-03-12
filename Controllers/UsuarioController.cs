@@ -27,7 +27,7 @@ public class UsuariosController : ControllerBase
         {
             return NotFound();
         }
-        return await _dbContext.Usuarios.ToListAsync();
+        return await _dbContext.Usuarios.OrderByDescending(i => i.Fecha).ToListAsync();
 
     }
 
